@@ -1,3 +1,4 @@
+const { table } = require('console')
 const path = require('path')
 const fs = require('fs').promises
 
@@ -25,7 +26,7 @@ function getContactById(contactId) {
     .then((contacts) =>
       contacts.find((contact) => Number(contact.id) === Number(contactId))
     )
-    .finally(displayContacts)
+    .then((contact) => console.table(contact))
     .catch((err) => console.log(err.message))
 }
 
